@@ -73,3 +73,4 @@ Changelog
     fix: download works from uploaded files datapage too 
 
 If you upgrade from the first release then the old records without separate download code (uuid) doesn't get filled if it is accessed so earlier upload sets files can't be downloaded. You have to add the uuid by hand with appadmin. Sorry for that.
+
