@@ -1,0 +1,75 @@
+Átmeneti tároló / Temporary storage
+
+Legalább  Web2py 1.95.1 kell hozzá.
+Leírás
+
+Ez a kis alkalmazás lehetővé teszi, hogy bejelentkezés nélkül lehessen pár fájlt egyszerűen megosztani másokkal az interneten.
+
+    Van regisztrált felhasználó, aki létrehozhat feltöltési csoportokat, ahol megadhatja, hogy hány fájlt mennyi ideig lehet fel-, illetve letölteni.
+    Vesszővel elválasztott e-mail címeket megadva fájl feltöltéskor az e-mail címekre elmegy egy levél a fájl adataival hogy hol lehet letölteni és meddig.
+    A létrehozott feltöltési csoportokhoz a felületen megjelenik egy feltöltési link, amit bárkinek megadva a feltöltési csoportba képes fájlt feltölteni.
+    Ugyanúgy a feltöltési csoporthoz tartozik egy letöltési link, amit felhasználva bárki letöltheti a fájlokat. 
+
+Telepítés
+
+Telepítés után az első felhasználó tud regisztrálni, utána eltűnik a lehetőség. Miután regisztrált az appadmin-ban hozzá kell venni az admin csoporthoz, ezután tudja használni a felületet.
+
+Új felhasználót az appadmin-on keresztül lehet létrehozni, majd meg kell csinálni a saját csoportját és hozzá kell adni ehhez a csoporthoz és az admin csoporthoz. Pl. gipszjakab felhasználóhoz létrehozzuk a user_2 csoportot majd gipszjakab-ot felvesszük a user_2 csoportba és az admin csoportba.
+
+A
+
+models/0.py
+
+fájl tartalmát kell a körülményeknek megfelelően megszerkeszteni.
+Változások
+
+110623
+
+    feltöltött fájlokhoz MD5Sum generálás
+    kisebb megjelenítési javítások 
+
+110608.a
+
+    fájlletöltésekről feljegyzések
+    bejelentkezett felhasználó a feltöltött fájlokat törölni tudja
+    fájlletöltések url-ben a feltöltéstől különböző kód
+    jav: feltöltött fájl adatlapról is megy a fájl letöltés 
+
+Ha a legelső verzióról frissítesz a feltöltési csoportok nem tartalmaznak kódot a letöltéshez ezeket kézzel kell az appadmin segítségével kitölteni, különben az azokba feltöltött fájlokat nem lehet letölteni.
+Description
+
+You need at least  Web2py 1.95.1.
+
+With this little app you can share some files with everybody on net without authenticating
+
+    There is an authenticated user who can create upload sets. He or she can specify how many files can be uploaded and how long can somebody download or upload them.
+    He or she can specify a list of email address to notify is file get uploaded.
+    There is a link to the upload sets that can be used to upload files.
+    There is a link to the upload sets that can be used to download files. 
+
+Install
+
+After install the first user can register himself or herself after that the registration is disabled. You need to add this and all the users you create through appadmin to the admin group in order to be able to use the app to create upload sets.
+
+If you create a new user you have to create an unique group for it and add it to the group. You need to add it to admin group too.
+
+You may edit the
+
+models/0.py
+
+file according to your needs.
+Changelog
+
+110623
+
+    generating MD5Sum with hashlib for uploaded files
+    little design change 
+
+110608.a
+
+    data about the file downloads
+    authorized user can delete individual uploaded file
+    separate code for download and upload urls
+    fix: download works from uploaded files datapage too 
+
+If you upgrade from the first release then the old records without separate download code (uuid) doesn't get filled if it is accessed so earlier upload sets files can't be downloaded. You have to add the uuid by hand with appadmin. Sorry for that.
