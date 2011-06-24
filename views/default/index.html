@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+
+<h2>{{=T('File upload sets')}}</h2>
+
+{{=filelist}}
+
+{{if inactivefilelists:}}
+<h3>{{=T('Inactive file upload sets')}}</h3>
+{{=inactivefilelists}}
+{{pass}}

@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+
+<h2>{{=T('File upload')}}::{{=controlldata_title}}</h2>
+
+{{=form}}
+
+{{if filelist:}}
+<h2>{{=T('Uploaded files')}}</h2>
+{{=filelist}}
+{{pass}}
+

@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+
+<h2>{{=T('File store')}}</h2>
+
+{{=form}}
+
+{{if filelist:}}
+<h2>{{=T('Download list')}}</h2>
+{{=filelist}}
+{{pass}}
+
