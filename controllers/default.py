@@ -507,7 +507,12 @@ def compute_md5( filename ):
 	# ###################################################################
 	import hashlib
 	md5 = hashlib.md5()
-	with open( filename, 'rb' ) as f:
-		for chunk in iter( lambda: f.read( 128 * md5.block_size ), '' ):
-			md5.update( chunk )
+	f = open( filename, 'rb' )
+	while True:
+		data = f.read( 128 * md5.block_size )
+		if not data:
+			break
+		md5.update( data )
+	f.close()
 	return str( md5.hexdigest() )
+
