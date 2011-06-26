@@ -25,6 +25,10 @@ models/0.py
 fájl tartalmát kell a körülményeknek megfelelően megszerkeszteni.
 Változások
 
+110626
+
+ * md5sum átalakítása, hogy működjön python2.5-tel, köszönet Péternek hogy rávilágított a problémára
+
 110623
 
     feltöltött fájlokhoz MD5Sum generálás
@@ -60,7 +64,12 @@ You may edit the
 models/0.py
 
 file according to your needs.
+
 Changelog
+
+110626
+
+    md5sum works now with python2.5. Thanks Peter to sort it out.
 
 110623
 
