@@ -6,7 +6,7 @@
 '%Y-%m-%d %H:%M:%S': '%Y.%m.%d. %H:%M:%S',
 '%s rows deleted': '%s sorok törlődtek',
 '%s rows updated': '%s sorok frissítődtek',
-'About':'Névjegy',
+'About': 'Névjegy',
 'Available databases and tables': 'Elérhető adatbázisok és táblák',
 'Cannot be empty': 'Nem lehet üres',
 'Check to delete': 'Törléshez válaszd ki',
@@ -184,4 +184,5 @@
 'state': 'állapot',
 'table': 'tábla',
 'unable to parse csv file': 'nem lehet a csv fájlt beolvasni',
+'value already in database or empty': 'az adatbázis már tartalmazza ezt az értéket vagy nincs megadva semmi',
 }

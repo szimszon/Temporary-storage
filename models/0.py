@@ -21,4 +21,5 @@ settings.plugins = []
 settings.default_max_number_of_uploadable_files = 1
 settings.default_valid_download_days = 7
 settings.default_valid_upload_days = 7
-settings.verzion_number = '110626'
+settings.verzion_number = '110627'
+settings.uuid_writable = False
