@@ -29,33 +29,37 @@ def index():
 																															left = db.auth_user.on( db.controlldata.modified_by == db.auth_user.id ),
 																															 orderby = db.controlldata.title )
 	flist = []
+
 	for f in filelists:
 		if f.controlldata.uploadvaliddate >= request.now.date():
 			#
 			# még lehet feltölteni
 			# ####################
-			ul = A( '[%s]' % T( 'Link' ), _href = URL( f = 'upload', args = f.controlldata.uuid ) )
+			ul = A( '[%s]' % T( 'Link' ), _href = URL( f = 'upload', args = f.controlldata.uuid ),
+								_title = T( 'Valid before and on %(date)s', dict( date = f.controlldata.uploadvaliddate ) ) )
 			ue = A( '[%s]' % T( 'Email' ), _href = T( '''mailto:?Subject=%s upload link&Body=You could upload files at http://%s%s''' ,
 																							 ( str( f.controlldata.title ),
 																								request.env.http_host,
-																								URL( f = 'upload', args = f.controlldata.uuid ) ) ) )
+																								URL( f = 'upload', args = f.controlldata.uuid ) ) ),
+								_title = T( 'Valid before and on %(date)s', dict( date = f.controlldata.uploadvaliddate ) ) )
 		else:
-			ul = XML( '[<s>%s</s>]' % T( 'Link' ) )
-			ue = XML( '[<s>%s</s>]' % T( 'Email' ) )
-
+			ul = XML( SPAN( XML( '[<s>%s</s>]' % T( 'Link' ) ), _title = T( 'Overdue at %(date)s', dict( date = f.controlldata.uploadvaliddate ) ) ) )
+			ue = XML( SPAN( XML( '[<s>%s</s>]' % T( 'Email' ) ), _title = T( 'Overdue at %(date)s', dict( date = f.controlldata.uploadvaliddate ) ) ) )
 
 		if f.controlldata.downloadvaliddate >= request.now.date():
 			#
 			# még le lehet tölteni
 			# ####################
-			dl = A( '[%s]' % T( 'Link' ), _href = URL( f = 'download', vars = dict( q = f.controlldata.dluuid ) ) )
+			dl = A( '[%s]' % T( 'Link' ), _href = URL( f = 'download', vars = dict( q = f.controlldata.dluuid ) ),
+								_title = T( 'Valid before and on %(date)s', dict( date = f.controlldata.downloadvaliddate ) ) )
 			de = A( '[%s]' % T( 'Email' ), _href = T( 'mailto:?Subject=%s download link&Body=http://%s%s' ,
 																							 ( str( f.controlldata.title ),
 																								 request.env.http_host,
-																								 URL( f = 'download', vars = dict( q = f.controlldata.dluuid ) ) ) ) )
+																								 URL( f = 'download', vars = dict( q = f.controlldata.dluuid ) ) ) ),
+								_title = T( 'Valid before and on %(date)s', dict( date = f.controlldata.downloadvaliddate ) ) )
 		else:
-			dl = XML( '[<s>%s</s>]' % T( 'Link' ) )
-			de = XML( '[<s>%s</s>]' % T( 'Email' ) )
+			dl = XML( SPAN( XML( '[<s>%s</s>]' % T( 'Link' ) ), _title = T( 'Overdue at %(date)s', dict( date = f.controlldata.downloadvaliddate ) ) ) )
+			de = XML( SPAN( XML( '[<s>%s</s>]' % T( 'Email' ) ), _title = T( 'Overdue at %(date)s', dict( date = f.controlldata.downloadvaliddate ) ) ) )
 
 		flist.append( TR( 
 									TD( A( f.controlldata.title, _href = URL( f = 'add', args = f.controlldata.id ), _title = f.controlldata.title ), _class = 'description' ) ,
