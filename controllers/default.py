@@ -60,9 +60,12 @@ def index():
 		else:
 			dl = XML( SPAN( XML( '[<s>%s</s>]' % T( 'Link' ) ), _title = T( 'Overdue at %(date)s', dict( date = f.controlldata.downloadvaliddate ) ) ) )
 			de = XML( SPAN( XML( '[<s>%s</s>]' % T( 'Email' ) ), _title = T( 'Overdue at %(date)s', dict( date = f.controlldata.downloadvaliddate ) ) ) )
-
+		piece = db( db.filestore.controlldata_id == f.controlldata.id ).count()
+		ctitle = T( '%(title)s (%(piece)s/%(max)s files)', dict( title = f.controlldata.title,
+																								piece = piece,
+																								max = f.controlldata.filenumber ) )
 		flist.append( TR( 
-									TD( A( f.controlldata.title, _href = URL( f = 'add', args = f.controlldata.id ), _title = f.controlldata.title ), _class = 'description' ) ,
+									TD( A( ctitle, _href = URL( f = 'add', args = f.controlldata.id ), _title = ctitle ), _class = 'description' ) ,
 									TD( ul, ue , _class = 'link' ),
 									TD( dl, de , _class = 'link' ),
 									TD( SPAN( f.auth_user.email, _title = f.auth_user.email ) , BR(), f.controlldata.modified_on ), _class = 'modified' ) )

@@ -2,6 +2,7 @@
 {
 '\nFile reveived can be downloaded until %s.\n=========================================\n\nDownload set %s link:\n http://%s%s\n\nDirect link to the file:\n http://%s%s\n\n/ File details:\n| -------------\n| %s: %s\n| %s: %s\n| %s: %s\n| %s: %s\n| %s: %s\n\--------------\n	': '\nFájl érkezett, letölthető %s -ig.\n=========================================\n\n%s csoport letöltési link:\n http://%s%s\n\nKözvetlen letöltési link a fájlhoz:\n http://%s%s\n\n/ Fájl adatok:\n| -------------\n| %s: %s\n| %s: %s\n| %s: %s\n| %s: %s\n| %s: %s\n\--------------\n	',
 '"update" is an optional expression like "field1=\'newvalue\'". You cannot update or delete the results of a JOIN': '"update" is an optional expression like "field1=\'newvalue\'". You cannot update or delete the results of a JOIN',
+'%(title)s (%(piece)s/%(max)s files)': '%(title)s (%(piece)s/%(max)s fájl)',
 '%Y-%m-%d': '%Y.%m.%d.',
 '%Y-%m-%d %H:%M:%S': '%Y.%m.%d. %H:%M:%S',
 '%s rows deleted': '%s sorok törlődtek',
